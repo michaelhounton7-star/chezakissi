@@ -1,0 +1,904 @@
+<!--
+  ============================================================================
+  CHEZ AKISSI — Site vitrine (Cotonou, Bénin)
+  ============================================================================
+  INFORMATIONS MANQUANTES À OBTENIR AVANT PUBLICATION EN LIGNE :
+
+  1. ADRESSE POSTALE EXACTE (quartier, rue, repère visuel).
+     -> Chercher "[ADRESSE À COMPLÉTER]" dans ce fichier (section Contact + footer).
+
+  2. COORDONNÉES GPS PRÉCISES pour la carte Google Maps intégrée.
+     -> Voir les constantes LATITUDE / LONGITUDE tout en haut du bloc <script>.
+        Elles sont pour l'instant réglées sur le centre approximatif de
+        Cotonou (repère visuel temporaire) : à remplacer dès que l'adresse
+        exacte est connue.
+
+  3. ADRESSE EMAIL officielle du restaurant.
+     -> Chercher "[EMAIL À COMPLÉTER]" (section Contact).
+
+  4. NOTE GOOGLE + NOMBRE D'AVIS exacts.
+     -> Chercher "[NOTE / NOMBRE D'AVIS À COMPLÉTER]" (section Avis clients).
+
+  5. VRAIS AVIS CLIENTS (texte + auteur). Aucun témoignage n'a été inventé :
+     un encart d'attente est prévu dans la section "Avis clients" (id="avis").
+
+  6. LIEN EXACT vers la page Facebook "Chez Akissi Attieke de Luxe
+     Poissons/ailerons" (~1 478 abonnés au moment de la rédaction).
+     -> Chercher "[LIEN FACEBOOK À COMPLÉTER]" (section Avis clients + footer).
+
+  7. PHOTO RÉELLE de la salle / ambiance du restaurant.
+     -> La section "Ambiance" (id="ambiance") utilise pour l'instant une
+        illustration de substitution clairement légendée. Remplacer le bloc
+        marqué "PLACEHOLDER AMBIANCE" par une vraie photo dès que possible.
+
+  8. SERVICES : livraison, à emporter, réservations, parking, bières, etc.
+     ont été fournis comme "confirmés" dans le brief — à revérifier sur place
+     si un doute subsiste avant publication.
+
+  DÉJÀ INTÉGRÉ (fichiers trouvés dans le dossier du projet, réutilisés tels
+  quels) :
+     - images/logo-chez-akissi.jpg  → logo officiel réel (repris du fichier
+       fourni). Remplacer par une version plus haute résolution si dispo.
+     - images/attieke-poisson-hero.jpg → vraie photo de plats attiéké
+       poisson / ailerons Chez Akissi, utilisée en bannière et en section
+       "Notre spécialité". Remplacer par une photo pro si disponible.
+
+  Le téléphone/WhatsApp (+229 01 97 05 19 41) et les horaires
+  (09h00–22h30, tous les jours) sont des informations vérifiées fournies
+  dans le brief et utilisées telles quelles dans tout le site.
+  ============================================================================
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chez Akissi — Attiéké Poisson &amp; Ailerons | Cotonou, Bénin</title>
+<meta name="description" content="Chez Akissi, à Cotonou : attiéké poisson et ailerons dans un cadre chaleureux. Livraison, à emporter, sur place. Ouvert tous les jours de 9h à 22h30.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,700&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   TOKENS
+   ========================================================================== */
+:root{
+  --cream:        #FAF3E6;
+  --warm-white:   #FFFDF9;
+  --charcoal:     #241A12;
+  --charcoal-2:   #1A130D;
+  --orange:       #E67A2E;   /* tiré du logo officiel */
+  --orange-dark:  #C05F1E;
+  --green:        #1E4A2C;   /* tiré du logo officiel */
+  --green-light:  #2E6B41;
+  --piment:       #C23A1E;   /* sauce tomate / piment, tiré de la photo */
+  --gold:         #E4A63C;   /* plantain frite */
+  --whatsapp:     #25D366;
+  --whatsapp-dark:#1EBE5A;
+
+  --ink:          var(--charcoal);
+  --ink-soft:     #6B5C4E;
+  --line:         rgba(36,26,18,0.12);
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body:    "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --container: 1180px;
+  --radius: 18px;
+  --radius-sm: 10px;
+
+  --shadow-sm: 0 2px 10px rgba(36,26,18,0.08);
+  --shadow-md: 0 10px 30px rgba(36,26,18,0.14);
+  --shadow-lg: 0 24px 60px rgba(36,26,18,0.22);
+}
+
+/* ==========================================================================
+   RESET
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{margin:0;padding:0;list-style:none;}
+h1,h2,h3,h4{margin:0;font-family:var(--font-display);font-weight:700;line-height:1.08;}
+p{margin:0;}
+button{font:inherit;cursor:pointer;}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px;}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;}
+}
+
+/* ==========================================================================
+   SIGNATURE — bandeau motif "wax" (losanges), écho du cercle du logo
+   ========================================================================== */
+.wax-strip{
+  height:16px;
+  background-color:var(--orange);
+  background-image:
+    linear-gradient(135deg, var(--gold) 25%, transparent 25%),
+    linear-gradient(225deg, var(--gold) 25%, transparent 25%),
+    linear-gradient(45deg,  var(--green) 25%, transparent 25%),
+    linear-gradient(315deg, var(--green) 25%, transparent 25%);
+  background-position: 12px 0, 12px 0, 0 0, 0 0;
+  background-size: 24px 24px;
+  background-repeat: repeat-x;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  background:rgba(250,243,230,0.92);
+  backdrop-filter:saturate(160%) blur(10px);
+  border-bottom:1px solid var(--line);
+  transition:box-shadow .3s ease, padding .3s ease;
+}
+.site-header.is-scrolled{ box-shadow:var(--shadow-sm); }
+.header-inner{
+  display:flex; align-items:center; gap:16px;
+  padding:14px 24px;
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;}
+.brand-logo{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--warm-white);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden; flex:none;
+  border:2px solid var(--orange);
+  box-shadow:var(--shadow-sm);
+  transition:transform .3s ease;
+}
+.brand:hover .brand-logo{transform:rotate(-6deg) scale(1.05);}
+.brand-logo img{width:100%;height:100%;object-fit:cover;}
+.brand-text{min-width:0;}
+.brand-text .name{
+  font-family:var(--font-display); font-weight:700; font-size:1.3rem;
+  color:var(--green); line-height:1;
+}
+.brand-text .tagline{
+  font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--ink-soft); font-weight:600; white-space:nowrap;
+}
+
+.main-nav{margin-left:auto;display:flex;align-items:center;gap:28px;}
+.main-nav a{
+  font-weight:600; font-size:.94rem; color:var(--ink);
+  position:relative; padding:4px 0;
+}
+.main-nav a::after{
+  content:""; position:absolute; left:0; right:100%; bottom:-2px; height:2px;
+  background:var(--orange); transition:right .25s ease;
+}
+.main-nav a:hover::after{right:0;}
+
+.btn{
+  display:inline-flex; align-items:center; gap:9px;
+  padding:12px 22px; border-radius:999px; font-weight:700; font-size:.92rem;
+  border:2px solid transparent; transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-whatsapp{
+  background:var(--whatsapp); color:#fff;
+  box-shadow:0 8px 20px rgba(37,211,102,0.35);
+}
+.btn-whatsapp:hover{background:var(--whatsapp-dark); box-shadow:0 12px 26px rgba(37,211,102,0.45);}
+.btn-outline{
+  background:transparent; border-color:var(--charcoal); color:var(--charcoal);
+}
+.btn-outline:hover{background:var(--charcoal); color:var(--warm-white);}
+.btn-primary{
+  background:var(--orange); color:#fff; box-shadow:0 8px 20px rgba(230,122,46,0.35);
+}
+.btn-primary:hover{background:var(--orange-dark);}
+.icon{width:18px;height:18px;flex:none;}
+
+.nav-toggle{
+  display:none; margin-left:auto; background:none; border:none; padding:8px;
+  flex-direction:column; gap:5px;
+}
+.nav-toggle span{width:26px;height:2.5px;background:var(--charcoal);border-radius:2px;transition:.3s;}
+.nav-toggle.is-open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.nav-toggle.is-open span:nth-child(2){opacity:0;}
+.nav-toggle.is-open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero{
+  position:relative; min-height:min(92vh,880px); display:flex; align-items:flex-end;
+  overflow:hidden; color:var(--warm-white);
+}
+.hero-media{position:absolute; inset:0; z-index:0;}
+.hero-media img{
+  width:100%; height:100%; object-fit:cover; object-position:50% 38%;
+  transform:scale(1.06);
+  animation:hero-zoom 16s ease-out forwards;
+}
+@keyframes hero-zoom{ to{ transform:scale(1); } }
+.hero-media::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(0deg, rgba(20,13,8,0.88) 0%, rgba(20,13,8,0.55) 38%, rgba(20,13,8,0.25) 62%, rgba(20,13,8,0.35) 100%);
+}
+.hero-inner{position:relative; z-index:1; width:100%; padding:120px 0 64px;}
+.hero-badge{
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(255,253,249,0.14); border:1px solid rgba(255,253,249,0.35);
+  padding:7px 16px; border-radius:999px; font-size:.78rem; font-weight:700;
+  letter-spacing:.06em; text-transform:uppercase; margin-bottom:22px;
+  backdrop-filter:blur(4px);
+}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse-dot 2s ease-in-out infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:.35;}}
+
+.hero h1{
+  font-size:clamp(2.5rem, 5.4vw, 4.6rem);
+  max-width:15ch; margin-bottom:22px; color:var(--warm-white);
+  text-shadow:0 4px 24px rgba(0,0,0,.25);
+}
+.hero h1 em{
+  font-style:italic; color:var(--gold); font-weight:500;
+}
+.hero p.lead{
+  font-size:clamp(1.02rem,1.6vw,1.22rem); max-width:46ch; color:rgba(255,253,249,0.92);
+  margin-bottom:36px;
+}
+.hero-actions{display:flex; flex-wrap:wrap; gap:16px;}
+.hero-actions .btn-outline{border-color:rgba(255,253,249,0.6); color:var(--warm-white);}
+.hero-actions .btn-outline:hover{background:var(--warm-white); color:var(--charcoal);}
+
+.hero-caption{
+  position:absolute; right:24px; bottom:18px; z-index:1;
+  font-size:.72rem; color:rgba(255,253,249,0.7); font-style:italic;
+}
+
+/* ==========================================================================
+   REVEAL ON SCROLL
+   ========================================================================== */
+.reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+.reveal.is-visible{opacity:1; transform:translateY(0);}
+.reveal-stagger > *{transition-delay:calc(var(--i,0) * 90ms);}
+
+/* ==========================================================================
+   SECTION SCAFFOLDING
+   ========================================================================== */
+section{padding:96px 0;}
+.eyebrow{
+  display:inline-block; font-size:.78rem; font-weight:800; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--piment); margin-bottom:14px;
+}
+.section-head{max-width:640px; margin-bottom:56px;}
+.section-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem); color:var(--green);}
+.section-head p{margin-top:16px; color:var(--ink-soft); font-size:1.05rem;}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+
+/* ==========================================================================
+   SPÉCIALITÉ
+   ========================================================================== */
+.specialty{display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center;}
+.specialty-text p{color:var(--ink-soft); font-size:1.06rem; margin-bottom:22px;}
+.specialty-tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px;}
+.specialty-tags li{
+  background:var(--warm-white); border:1px solid var(--line); padding:9px 16px;
+  border-radius:999px; font-size:.88rem; font-weight:600; color:var(--green);
+}
+.specialty-media{position:relative;}
+.plate-ring{
+  position:absolute; inset:-26px; border:2px solid var(--orange); border-radius:28px;
+  opacity:.55; pointer-events:none;
+}
+.specialty-photo{
+  border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-lg);
+  position:relative;
+}
+.specialty-photo img{
+  width:100%; height:420px; object-fit:cover; object-position:20% 45%;
+  transition:transform .6s ease;
+}
+.specialty-photo:hover img{transform:scale(1.06);}
+.photo-caption{
+  font-size:.78rem; color:var(--ink-soft); margin-top:12px; font-style:italic;
+}
+
+/* ==========================================================================
+   SERVICES
+   ========================================================================== */
+.services-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+}
+.service-card{
+  background:var(--warm-white); border-radius:var(--radius); padding:28px 24px;
+  border:1px solid var(--line); box-shadow:var(--shadow-sm);
+  transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  position:relative; overflow:hidden;
+}
+.service-card::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,var(--orange),var(--gold));
+  transform:scaleX(0); transform-origin:left; transition:transform .35s ease;
+}
+.service-card:hover{transform:translateY(-6px); box-shadow:var(--shadow-md); border-color:transparent;}
+.service-card:hover::before{transform:scaleX(1);}
+.service-icon{
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(230,122,46,0.12); color:var(--orange-dark);
+  display:flex;align-items:center;justify-content:center; margin-bottom:18px;
+}
+.service-card h3{font-size:1.06rem; color:var(--green); margin-bottom:8px; font-weight:700;}
+.service-card p{font-size:.9rem; color:var(--ink-soft);}
+
+/* ==========================================================================
+   AMBIANCE
+   ========================================================================== */
+.ambiance{
+  background:var(--charcoal); color:var(--warm-white);
+  border-radius:0;
+}
+.ambiance .container{
+  display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+}
+.ambiance .eyebrow{color:var(--gold);}
+.ambiance h2{color:var(--warm-white);}
+.ambiance p{color:rgba(255,253,249,0.78); font-size:1.06rem; margin-top:18px;}
+.ambiance-quote{
+  margin-top:28px; padding-left:20px; border-left:3px solid var(--orange);
+  font-family:var(--font-display); font-style:italic; font-size:1.25rem; color:var(--gold);
+}
+.placeholder-media{
+  border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-lg);
+  border:1px dashed rgba(255,253,249,0.35);
+  background:linear-gradient(160deg, #2A2019 0%, #1A130D 100%);
+  aspect-ratio:4/3; position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.placeholder-media svg{width:64%; height:64%; opacity:.9;}
+.placeholder-tag{
+  position:absolute; top:14px; left:14px; background:rgba(230,122,46,0.9);
+  color:#fff; font-size:.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  padding:5px 12px; border-radius:999px;
+}
+
+/* ==========================================================================
+   AVIS
+   ========================================================================== */
+.reviews-wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:32px;}
+.review-placeholder{
+  background:var(--warm-white); border:2px dashed var(--orange); border-radius:var(--radius);
+  padding:36px; text-align:center;
+}
+.review-placeholder .stars{font-size:1.6rem; color:var(--gold); letter-spacing:4px; margin-bottom:14px;}
+.review-placeholder strong{display:block; font-size:1.1rem; color:var(--green); margin-bottom:8px;}
+.review-placeholder p{color:var(--ink-soft); font-size:.94rem;}
+.fb-card{
+  background:var(--green); color:var(--warm-white); border-radius:var(--radius);
+  padding:32px; display:flex; flex-direction:column; gap:14px; justify-content:center;
+}
+.fb-card .fb-count{font-family:var(--font-display); font-size:2rem; font-weight:700; color:var(--gold);}
+.fb-card p{color:rgba(255,253,249,0.85); font-size:.92rem;}
+.fb-card .btn{align-self:flex-start; margin-top:6px;}
+
+/* ==========================================================================
+   HORAIRES
+   ========================================================================== */
+.hours{
+  background:linear-gradient(135deg, var(--orange) 0%, var(--piment) 100%);
+  color:var(--warm-white); text-align:center;
+}
+.hours .eyebrow{color:rgba(255,253,249,0.85);}
+.hours h2{color:var(--warm-white);}
+.hours-big{
+  font-family:var(--font-display); font-weight:900; font-size:clamp(3rem,9vw,6rem);
+  margin:18px 0 8px; line-height:1;
+}
+.hours-sub{font-size:1.1rem; font-weight:600; margin-bottom:44px; opacity:.95;}
+.hours-table{
+  max-width:520px; margin:0 auto; background:rgba(255,253,249,0.12);
+  border-radius:var(--radius); overflow:hidden; backdrop-filter:blur(4px);
+}
+.hours-table li{
+  display:flex; justify-content:space-between; padding:13px 26px;
+  font-weight:600; font-size:.96rem;
+  border-bottom:1px solid rgba(255,253,249,0.18);
+}
+.hours-table li:last-child{border-bottom:none;}
+.hours-table span:last-child{opacity:.9;}
+
+/* ==========================================================================
+   CONTACT
+   ========================================================================== */
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; margin-bottom:56px;}
+.contact-list{display:flex; flex-direction:column; gap:24px;}
+.contact-item{display:flex; gap:16px; align-items:flex-start;}
+.contact-item .service-icon{margin-bottom:0; flex:none;}
+.contact-item h3{font-size:1rem; color:var(--green); margin-bottom:4px;}
+.contact-item p, .contact-item a{color:var(--ink-soft); font-size:.95rem;}
+.contact-item a.value-link{color:var(--orange-dark); font-weight:700;}
+.placeholder-text{
+  color:var(--piment); font-weight:700; background:rgba(194,58,30,0.09);
+  padding:2px 8px; border-radius:6px; font-size:.85rem;
+}
+.contact-card{
+  background:var(--warm-white); border-radius:var(--radius); padding:36px;
+  box-shadow:var(--shadow-md); border:1px solid var(--line);
+}
+.contact-card h3{font-family:var(--font-display); font-size:1.5rem; color:var(--green); margin-bottom:18px;}
+
+.map-wrap{
+  position:relative; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-lg);
+  border:1px solid var(--line);
+}
+.map-banner{
+  position:absolute; top:16px; left:16px; z-index:2;
+  background:var(--warm-white); border:1px solid var(--line);
+  padding:9px 16px; border-radius:999px; font-size:.78rem; font-weight:700;
+  color:var(--piment); box-shadow:var(--shadow-sm);
+}
+.map-wrap iframe{width:100%; height:420px; border:0; display:block;}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer{background:var(--charcoal-2); color:rgba(255,253,249,0.75); padding:56px 0 28px;}
+.footer-top{
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;
+  padding-bottom:32px; margin-bottom:28px; border-bottom:1px solid rgba(255,253,249,0.12);
+}
+.footer-brand{display:flex; align-items:center; gap:14px;}
+.footer-brand .brand-logo{border-color:var(--gold);}
+.footer-brand .name{color:var(--warm-white); font-family:var(--font-display); font-size:1.2rem;}
+.footer-brand .tagline{color:rgba(255,253,249,0.6);}
+.footer-links{display:flex; gap:26px; flex-wrap:wrap;}
+.footer-links a{font-size:.9rem; font-weight:600; color:rgba(255,253,249,0.8);}
+.footer-links a:hover{color:var(--gold);}
+.footer-bottom{
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  font-size:.8rem; color:rgba(255,253,249,0.5);
+}
+
+/* ==========================================================================
+   FLOATING WHATSAPP
+   ========================================================================== */
+.fab-whatsapp{
+  position:fixed; right:22px; bottom:22px; z-index:200;
+  width:60px; height:60px; border-radius:50%;
+  background:var(--whatsapp); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 10px 26px rgba(37,211,102,0.5);
+  animation:fab-pulse 2.6s ease-in-out infinite;
+}
+.fab-whatsapp:hover{background:var(--whatsapp-dark);}
+.fab-whatsapp svg{width:30px;height:30px;}
+@keyframes fab-pulse{
+  0%,100%{ box-shadow:0 10px 26px rgba(37,211,102,0.5), 0 0 0 0 rgba(37,211,102,0.5);}
+  50%{ box-shadow:0 10px 26px rgba(37,211,102,0.5), 0 0 0 12px rgba(37,211,102,0);}
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width:960px){
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .specialty{grid-template-columns:1fr; gap:40px;}
+  .specialty-media{order:-1;}
+  .ambiance .container{grid-template-columns:1fr;}
+  .reviews-wrap{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr; gap:40px;}
+}
+
+@media (max-width:720px){
+  .main-nav{
+    position:fixed; inset:72px 0 0 0; background:var(--warm-white); z-index:99;
+    flex-direction:column; align-items:flex-start; gap:0; padding:20px 24px;
+    transform:translateY(-12px); opacity:0; pointer-events:none; transition:.25s ease;
+  }
+  .main-nav.is-open{transform:translateY(0); opacity:1; pointer-events:auto;}
+  .main-nav a{width:100%; padding:14px 0; border-bottom:1px solid var(--line);}
+  .main-nav .btn{margin-top:16px; width:100%; justify-content:center;}
+  .nav-toggle{display:flex;}
+  .header-inner .btn-whatsapp{display:none;}
+  .brand-text .tagline{display:none;}
+  section{padding:64px 0;}
+  .services-grid{grid-template-columns:1fr;}
+  .hero-inner{padding-top:96px;}
+  .hero-actions{flex-direction:column; align-items:stretch;}
+  .footer-top{flex-direction:column; align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================================ HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner container">
+    <a href="#accueil" class="brand" aria-label="Chez Akissi — Accueil">
+      <span class="brand-logo">
+        <!-- LOGO : image réelle fournie (images/logo-chez-akissi.jpg). Remplacer ce fichier pour mettre à jour le logo. -->
+        <img src="images/logo-chez-akissi.jpg" alt="Logo Chez Akissi">
+      </span>
+      <span class="brand-text">
+        <span class="name">Chez Akissi</span>
+        <span class="tagline">Attiéké de luxe · Poissons &amp; ailerons</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#accueil">Accueil</a>
+      <a href="#specialite">Notre attiéké</a>
+      <a href="#services">Services</a>
+      <a href="#horaires">Horaires</a>
+      <a href="#contact">Contact</a>
+      <a href="https://wa.me/2290197051941?text=Bonjour%2C%20je%20souhaite%20commander%20chez%20Chez%20Akissi" class="btn btn-whatsapp" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.35c0-4.53 3.69-8.22 8.25-8.22 2.2 0 4.27.86 5.83 2.42a8.17 8.17 0 0 1 2.41 5.81c0 4.53-3.69 8.2-8.24 8.2Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.24-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.24-.86.85-.86 2.06 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29Z"/></svg>
+        Commander sur WhatsApp
+      </a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="wax-strip" aria-hidden="true"></div>
+
+<!-- ================================================================== HERO -->
+<section class="hero" id="accueil">
+  <div class="hero-media">
+    <!-- PHOTO RÉELLE : plats attiéké poisson & ailerons Chez Akissi -->
+    <img src="images/attieke-poisson-hero.jpg" alt="Assiettes d'attiéké poisson et ailerons servies chez Akissi, avec banane plantain frite et sauce pimentée">
+  </div>
+  <div class="hero-inner container">
+    <span class="hero-badge"><span class="dot"></span> Cotonou · Bénin — Ouvert tous les jours</span>
+    <h1>L'attiéké comme on l'aime, <em>chez Akissi</em></h1>
+    <p class="lead">Semoule de manioc, poisson grillé et ailerons croustillants, servis dans un cadre chaleureux — que vous soyez seul, entre amis ou en famille.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/2290197051941?text=Bonjour%2C%20je%20souhaite%20commander%20chez%20Chez%20Akissi" class="btn btn-whatsapp" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.35c0-4.53 3.69-8.22 8.25-8.22 2.2 0 4.27.86 5.83 2.42a8.17 8.17 0 0 1 2.41 5.81c0 4.53-3.69 8.2-8.24 8.2Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.24-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.24-.86.85-.86 2.06 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29Z"/></svg>
+        Commander sur WhatsApp
+      </a>
+      <a href="#specialite" class="btn btn-outline">Découvrir notre carte</a>
+    </div>
+  </div>
+  <span class="hero-caption">Photo : assiettes servies Chez Akissi</span>
+</section>
+<div class="wax-strip" aria-hidden="true"></div>
+
+<!-- ============================================================= SPÉCIALITÉ -->
+<section id="specialite">
+  <div class="container specialty reveal">
+    <div class="specialty-text">
+      <span class="eyebrow">Notre signature</span>
+      <h2>L'attiéké poisson, notre fierté</h2>
+      <p>Chez Akissi, l'attiéké — cette semoule de manioc légère et parfumée — est préparé pour accompagner à merveille le poisson grillé et les ailerons croustillants, relevés d'une sauce pimentée maison et servis avec banane plantain frite, tomate et oignon.</p>
+      <p>Un lieu chaleureux et convivial, pensé aussi bien pour un repas en solo que pour une tablée entre amis — étudiants et touristes de passage à Cotonou y sont les bienvenus.</p>
+      <ul class="specialty-tags">
+        <li>Semoule de manioc</li>
+        <li>Poisson grillé &amp; ailerons</li>
+        <li>Piment maison</li>
+        <li>Banane plantain frite</li>
+      </ul>
+    </div>
+    <div class="specialty-media">
+      <div class="plate-ring" aria-hidden="true"></div>
+      <div class="specialty-photo">
+        <!-- PHOTO RÉELLE : même cliché que la bannière, cadrage différent -->
+        <img src="images/attieke-poisson-hero.jpg" alt="Gros plan sur une assiette d'attiéké poisson chez Akissi">
+      </div>
+      <p class="photo-caption">Photo : assiettes attiéké poisson &amp; ailerons, servies Chez Akissi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ SERVICES -->
+<section id="services" style="background:var(--warm-white);">
+  <div class="container">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
+      <span class="eyebrow">Ce que nous proposons</span>
+      <h2>Nos services</h2>
+      <p>Pensés pour s'adapter à toutes les envies, à toute heure de la journée.</p>
+    </div>
+    <div class="services-grid reveal reveal-stagger" id="servicesGrid">
+      <!-- Cards générées ci-dessous, style="--i:n" pour l'effet d'apparition échelonné -->
+      <div class="service-card" style="--i:0">
+        <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13h13l4 5H3z"/><path d="M16 13V7a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v6"/><circle cx="7.5" cy="19.5" r="1.5"/><circle cx="17.5" cy="19.5" r="1.5"/></svg></span>
+        <h3>Livraison</h3>
+        <p>Votre attiéké préféré livré directement où vous êtes.</p>
+      </div>
+      <div class="service-card" style="--i:1">
+        <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a1 1 0 0 0-1 1v2a2 2 0 0 0 2 2v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1Z"/><path d="M7 12v7M12 12v7M17 12v7"/></svg></span>
+        <h3>À emporter</h3>
+        <p>Commandez et repartez avec votre repas, prêt en un rien de temps.</p>
+      </div>
+      <div class="service-card" style="--i:2">
+        <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9h16l-1 11H5L4 9Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg></span>
+        <h3>Sur place</h3>
+        <p>Installez-vous et profitez d'un repas chaleureux, seul ou en groupe.</p>
+      </div>
+      <div class="service-card" style="--i:3">
+        <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+        <h3>Service tardif</h3>
+        <p>Ouvert en soirée pour les envies d'attiéké de dernière minute.</p>
+      </div>
+      <div class="service-card" style="--i:4">
+        <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3h8l-1 4H9L8 3Z"/><path d="M7 7h10l-1 13a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1L7 7Z"/><path d="M6 12h12"/></svg></span>
+        <h3>Sélection de bières</h3>
+        <p>De quoi accompagner votre repas d'une boisson fraîche.</p>
+      </div>
+      <div class="service-card" style="--i:5">
+        <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M9 13h1M9 17h1"/></svg></span>
+        <h3>Parking gratuit</h3>
+        <p>Un espace pour vous garer sans souci, à disposition sur place.</p>
+      </div>
+      <div class="service-card" style="--i:6">
+        <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v4H4zM4 12h10v8H4zM17 12h3v8h-3z"/></svg></span>
+        <h3>Réservations</h3>
+        <p>Réservez votre table à l'avance pour un repas entre amis ou en famille.</p>
+      </div>
+      <div class="service-card" style="--i:7">
+        <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></span>
+        <h3>Petit-déj · Déjeuner · Dîner</h3>
+        <p>Servi du matin au soir, tous les jours de la semaine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ AMBIANCE -->
+<section class="ambiance" id="ambiance">
+  <div class="container reveal">
+    <div class="ambiance-text">
+      <span class="eyebrow">L'ambiance</span>
+      <h2>Un lieu chaleureux, à Cotonou</h2>
+      <p>Chez Akissi cultive une atmosphère conviviale où l'on se sent bien, que l'on vienne seul pour une pause repas ou en groupe pour partager un moment. Un cadre simple et accueillant, apprécié aussi bien des habitués que des touristes de passage.</p>
+      <p class="ambiance-quote">« Un repas seul ou entre amis, toujours dans la bonne humeur. »</p>
+    </div>
+    <div class="placeholder-media">
+      <span class="placeholder-tag">Photo à venir</span>
+      <!-- PLACEHOLDER AMBIANCE : aucune photo réelle de la salle n'est disponible pour le moment. -->
+      <svg viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="120" rx="70" ry="8" fill="#E67A2E" opacity="0.15"/>
+        <rect x="55" y="70" width="90" height="8" rx="3" fill="#E4A63C" opacity="0.8"/>
+        <rect x="70" y="78" width="8" height="34" fill="#E4A63C" opacity="0.6"/>
+        <rect x="122" y="78" width="8" height="34" fill="#E4A63C" opacity="0.6"/>
+        <rect x="35" y="90" width="10" height="30" rx="3" fill="#2E6B41" opacity="0.7"/>
+        <rect x="155" y="90" width="10" height="30" rx="3" fill="#2E6B41" opacity="0.7"/>
+        <circle cx="60" cy="40" r="4" fill="#E4A63C"/>
+        <circle cx="100" cy="30" r="4" fill="#E4A63C"/>
+        <circle cx="140" cy="40" r="4" fill="#E4A63C"/>
+        <path d="M60 44v20M100 34v26M140 44v20" stroke="#E4A63C" stroke-width="1.5" opacity="0.6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+<div class="wax-strip" aria-hidden="true"></div>
+
+<!-- ==================================================================== AVIS -->
+<section id="avis">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Avis clients</span>
+      <h2>Ce que disent nos clients</h2>
+    </div>
+    <div class="reviews-wrap reveal">
+      <div class="review-placeholder">
+        <div class="stars">★★★★★</div>
+        <strong>Note Google : <span class="placeholder-text">[NOTE / NOMBRE D'AVIS À COMPLÉTER]</span></strong>
+        <p>Les avis vérifiés de nos clients seront ajoutés ici prochainement. Aucun témoignage n'a été inventé — cet encart attend de vraies évaluations avant mise en ligne.</p>
+      </div>
+      <div class="fb-card">
+        <span class="fb-count">~1 478 abonnés</span>
+        <p>Suivez « Chez Akissi Attieke de Luxe Poissons/ailerons » sur Facebook pour les actualités et photos du restaurant.</p>
+        <!-- LIEN FACEBOOK À COMPLÉTER : remplacer href="#" par l'URL exacte de la page -->
+        <a href="#" class="btn btn-primary" aria-label="Lien Facebook à compléter">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5H16l.5-3H13.5V8.25c0-.87.24-1.46 1.49-1.46H16.6V4.14C16.3 4.1 15.3 4 14.13 4c-2.44 0-4.11 1.49-4.11 4.22v2.28H7.5v3h2.52V21h3.48Z"/></svg>
+          Voir la page Facebook
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== HORAIRES -->
+<section class="hours" id="horaires">
+  <div class="container reveal">
+    <span class="eyebrow">Horaires</span>
+    <h2>Ouvert tous les jours</h2>
+    <div class="hours-big">09h00 – 22h30</div>
+    <p class="hours-sub">7 jours sur 7 · aucun jour de fermeture</p>
+    <ul class="hours-table">
+      <li><span>Lundi</span><span>09h00 – 22h30</span></li>
+      <li><span>Mardi</span><span>09h00 – 22h30</span></li>
+      <li><span>Mercredi</span><span>09h00 – 22h30</span></li>
+      <li><span>Jeudi</span><span>09h00 – 22h30</span></li>
+      <li><span>Vendredi</span><span>09h00 – 22h30</span></li>
+      <li><span>Samedi</span><span>09h00 – 22h30</span></li>
+      <li><span>Dimanche</span><span>09h00 – 22h30</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- =============================================================== CONTACT -->
+<section id="contact" style="background:var(--warm-white);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Contact</span>
+      <h2>Venez nous rendre visite</h2>
+      <p>Un appel, un message WhatsApp, ou passez directement — nous sommes ouverts tous les jours.</p>
+    </div>
+
+    <div class="contact-grid reveal">
+      <div class="contact-list">
+        <div class="contact-item">
+          <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <div>
+            <h3>Adresse</h3>
+            <!-- ADRESSE À COMPLÉTER : quartier / rue / repère exact -->
+            <p>Cotonou, Bénin — <span class="placeholder-text">[ADRESSE À COMPLÉTER]</span></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
+          <div>
+            <h3>Téléphone / WhatsApp</h3>
+            <a class="value-link" href="https://wa.me/2290197051941?text=Bonjour%2C%20je%20souhaite%20commander%20chez%20Chez%20Akissi" target="_blank" rel="noopener">+229 01 97 05 19 41</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <div>
+            <h3>Email</h3>
+            <!-- EMAIL À COMPLÉTER -->
+            <p><span class="placeholder-text">[EMAIL À COMPLÉTER]</span></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+          <div>
+            <h3>Horaires</h3>
+            <p>Tous les jours, 09h00 – 22h30</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5H16l.5-3H13.5V8.25c0-.87.24-1.46 1.49-1.46H16.6V4.14C16.3 4.1 15.3 4 14.13 4c-2.44 0-4.11 1.49-4.11 4.22v2.28H7.5v3h2.52V21h3.48Z"/></svg></span>
+          <div>
+            <h3>Facebook</h3>
+            <!-- LIEN FACEBOOK À COMPLÉTER -->
+            <a class="value-link" href="#">Chez Akissi Attieke de Luxe Poissons/ailerons — <span class="placeholder-text">[LIEN À COMPLÉTER]</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h3>Commander en un clic</h3>
+        <p style="color:var(--ink-soft); margin-bottom:24px;">Le moyen le plus rapide de commander : envoyez-nous un message WhatsApp, nous répondons dès que possible.</p>
+        <a href="https://wa.me/2290197051941?text=Bonjour%2C%20je%20souhaite%20commander%20chez%20Chez%20Akissi" class="btn btn-whatsapp" target="_blank" rel="noopener" style="width:100%;justify-content:center;">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.35c0-4.53 3.69-8.22 8.25-8.22 2.2 0 4.27.86 5.83 2.42a8.17 8.17 0 0 1 2.41 5.81c0 4.53-3.69 8.2-8.24 8.2Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.24-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.24-.86.85-.86 2.06 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29Z"/></svg>
+          +229 01 97 05 19 41
+        </a>
+      </div>
+    </div>
+
+    <!-- Carte Google Maps intégrée en bas de page (iframe, sans clé API) -->
+    <div class="map-wrap reveal">
+      <span class="map-banner">Emplacement approximatif — à ajuster dès l'adresse confirmée</span>
+      <iframe
+        id="mapFrame"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+        title="Localisation Chez Akissi à Cotonou, Bénin (approximative)">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= FOOTER -->
+<div class="wax-strip" aria-hidden="true"></div>
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="brand-logo">
+          <img src="images/logo-chez-akissi.jpg" alt="Logo Chez Akissi">
+        </span>
+        <span>
+          <span class="name" style="display:block;">Chez Akissi</span>
+          <span class="tagline">Cotonou, Bénin</span>
+        </span>
+      </div>
+      <div class="footer-links">
+        <a href="#accueil">Accueil</a>
+        <a href="#specialite">Notre attiéké</a>
+        <a href="#services">Services</a>
+        <a href="#horaires">Horaires</a>
+        <a href="#contact">Contact</a>
+        <!-- LIEN FACEBOOK À COMPLÉTER -->
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Chez Akissi — Cotonou, Bénin. Tous droits réservés.</span>
+      <span>Site vitrine · téléphone et horaires vérifiés, autres informations à finaliser</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ WHATSAPP FAB -->
+<a class="fab-whatsapp" href="https://wa.me/2290197051941?text=Bonjour%2C%20je%20souhaite%20commander%20chez%20Chez%20Akissi" target="_blank" rel="noopener" aria-label="Commander sur WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.35c0-4.53 3.69-8.22 8.25-8.22 2.2 0 4.27.86 5.83 2.42a8.17 8.17 0 0 1 2.41 5.81c0 4.53-3.69 8.2-8.24 8.2Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.24-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.24-.86.85-.86 2.06 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29Z"/></svg>
+</a>
+
+<script>
+/* ==========================================================================
+   CONFIG — coordonnées GPS de la carte (PLACEHOLDER)
+   À remplacer dès que l'adresse exacte du restaurant est confirmée.
+   Valeurs actuelles = centre approximatif de Cotonou, Bénin (repère temporaire).
+   ========================================================================== */
+const LATITUDE = 6.3703;   // [LATITUDE À COMPLÉTER]
+const LONGITUDE = 2.3912;  // [LONGITUDE À COMPLÉTER]
+
+(function(){
+  // Construit l'iframe Google Maps sans clé API
+  const mapFrame = document.getElementById('mapFrame');
+  if (mapFrame) {
+    mapFrame.src = `https://www.google.com/maps?q=${LATITUDE},${LONGITUDE}&z=15&output=embed`;
+  }
+
+  // Header : ombre au scroll
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Menu mobile
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  navToggle.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('is-open');
+    navToggle.classList.toggle('is-open', open);
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mainNav.classList.remove('is-open');
+    navToggle.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', false);
+  }));
+
+  // Révélation au scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+
+  // Année courante
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
